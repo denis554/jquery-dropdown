@@ -51,5 +51,58 @@ if you want use custom html, mark parts of your dropdown using data attributes
 * `data-dropdown-role="trigger"`
 * `data-dropdown-role="drop-menu"`
 
+## Options
+
+### base
+* Type: *String*
+* Default: *dropdown*
+
+Base class name.
+
+### open
+* Type: *String*
+* Default: *dropdown_open*
+
+Open class name. Add on open dropdown.
+
+### disabled
+* Type: *String*
+* Default: *dropdown_disabled*
+
+Disabled class name.
+
+
+## Events
+
+Firs get jquery object of your dropdown
+
+```js
+var $dropdown = $('[data-dropdown-role="dropdown"]');
+```
+
+### opened.dropdown
+
+Trigger when dropdown is opened.
+
+```js
+$('[data-dropdown-role="dropdown"]').on('opened.dropdown', function(event) {
+	event.preventDefault();
+	console.log(event.target, 'opened');
+});
+```
+
+### closed.dropdown
+
+Trigger when dropdown is closed.
+
+```js
+$('[data-dropdown-role="dropdown"]').on('closed.dropdown', function(event) {
+	event.preventDefault();
+	console.log(event.target, 'closed');
+});
+```
+
+
+
 ## License
 [The MIT License (MIT)](LICENSE)
