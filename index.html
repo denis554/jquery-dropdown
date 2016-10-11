@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dropdown Demo</title>
+	<link rel="stylesheet" href="jquery.dropdown.css">
+	<style>
+		/* Demo styles */
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		}
+
+		.container {
+			margin: 50px auto;
+			max-width: 800px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div data-dropdown-role="dropdown" class="dropdown">
+			<button data-dropdown-role="trigger" class="dropdown__trigger">Dropdown<span class="dropdown__caret"></span></button>
+			<div data-dropdown-role="drop-menu" class="dropdown__menu">
+				<ul>
+					<li tabindex="0" class="dropdown__item">Item 1</li>
+					<li tabindex="0" class="dropdown__item">Item 2</li>
+					<li tabindex="0" class="dropdown__item">Item 3</li>
+					<li tabindex="0" class="dropdown__item">Item 4</li>
+					<li tabindex="0" class="dropdown__item">Item 5</li>
+					<li tabindex="0" class="dropdown__item">Item 6</li>
+					<li tabindex="0" class="dropdown__item">Item 7</li>
+					<li tabindex="0" class="dropdown__item">Item 8</li>
+				</ul>
+			</div>
+		</div>
+
+		<div data-dropdown-role="dropdown" class="dropdown">
+			<button data-dropdown-role="trigger" class="dropdown__trigger">Dropdown<span class="dropdown__caret"></span></button>
+			<div data-dropdown-role="drop-menu" class="dropdown__menu">
+				<ul>
+					<li tabindex="0" class="dropdown__item">Item 1</li>
+					<li tabindex="0" class="dropdown__item">Item 2</li>
+					<li tabindex="0" class="dropdown__item">Item 3</li>
+					<li tabindex="0" class="dropdown__item">Item 4</li>
+					<li tabindex="0" class="dropdown__item">Item 5</li>
+					<li tabindex="0" class="dropdown__item">Item 6</li>
+					<li tabindex="0" class="dropdown__item">Item 7</li>
+					<li tabindex="0" class="dropdown__item">Item 8</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="jquery.dropdown.js"></script>
+	<script>
+		$(document).ready(function() {
+			var $dropdown = $('[data-dropdown-role="dropdown"]').dropdown();
+
+			$dropdown.on('opened.dropdown', function(event) {
+				event.preventDefault();
+				console.log(event.target, 'opened');
+			});
+
+			$dropdown.on('closed.dropdown', function(event) {
+				event.preventDefault();
+				console.log(event.target, 'closed');
+			});
+		});
+	</script>
+
+</body>
+</html>
