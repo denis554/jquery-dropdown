@@ -1,5 +1,5 @@
 /*
- *  Dropdown - v1.0.0
+ *  Dropdown - v1.0.1
  *  Simple dropdown
  *  http://github.com/zoxon/jquery-dropdown
  *
@@ -23,7 +23,8 @@
 	var defaults = {
 		class: {
 			base: 'dropdown',
-			open: 'dropdown_open'
+			open: 'dropdown_open',
+			disabled: 'dropdown_disabled'
 		}
 	};
 
@@ -65,17 +66,14 @@
 		// Initialization logic
 		init: function() {
 			this.buildCache();
-			this.bindEvents();
+			this.setA11yAttrs();
 
-			this.$trigger.attr({
-				'aria-haspopup': true,
-				'aria-expanded': false,
-				'id': this.triggerId
-			});
-
-			this.$dropMenu.attr({
-				'aria-labelledby': this.triggerId
-			});
+			if (this.isDisabled()) {
+				this.setDisabledState();
+			}
+			else {
+				this.bindEvents();
+			}
 		},
 
 		// Remove plugin instance completely
@@ -141,7 +139,7 @@
 		isDisabled: function() {
 			var disabled = false;
 
-			if (this.disabled || $(this).hasClass(this.options.class.base + '_disabled')) {
+			if (this.$element.hasClass(this.options.class.disabled)) {
 				disabled = true;
 			}
 
@@ -219,6 +217,23 @@
 			}
 
 			this.focusableElements[ this.selected ].focus();
+		},
+
+		setA11yAttrs: function() {
+			this.$trigger.attr({
+				'aria-haspopup': true,
+				'aria-expanded': false,
+				'id': this.triggerId
+			});
+
+			this.$dropMenu.attr({
+				'aria-labelledby': this.triggerId
+			});
+		},
+
+		setDisabledState: function() {
+			this.$element.attr('aria-disabled', true);
+			this.$trigger.attr('disabled', true);
 		},
 
 		// Call calback by name
