@@ -74,7 +74,7 @@ Disabled class name.
 
 ## Events
 
-Firs get jquery object of your dropdown
+First get jquery object of your dropdown
 
 ```js
 var $dropdown = $('[data-dropdown-role="dropdown"]');
