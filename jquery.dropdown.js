@@ -1,5 +1,5 @@
 /*
- *  Dropdown - v1.0.2
+ *  Dropdown - v1.0.3
  *  Simple Accessible jQuery Dropdown Plugin
  *  http://github.com/zoxon/jquery-dropdown
  *
@@ -104,7 +104,6 @@
 			});
 
 			$(document).on('click' + '.' + plugin._name, function(event) {
-				event.preventDefault();
 				plugin.outerClickHandler.call(plugin, event);
 			});
 		},
