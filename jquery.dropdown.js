@@ -1,6 +1,6 @@
 /*
- *  Dropdown - v1.0.1
- *  Simple dropdown
+ *  Dropdown - v1.0.2
+ *  Simple Accessible jQuery Dropdown Plugin
  *  http://github.com/zoxon/jquery-dropdown
  *
  *  Made by Velichko Konstantin (zoxon)
@@ -87,7 +87,7 @@
 			this.$trigger = this.$element.find('[data-dropdown-role="trigger"]');
 			this.$dropMenu = this.$element.find('[data-dropdown-role="drop-menu"]');
 			this.focusableElements = this.$dropMenu.find('*[tabindex], a[href]');
-			this.selected = -1;
+			this.selected = 0;
 			this.triggerId = this._name + '_trigger_' + this.options.count;
 		},
 
@@ -115,8 +115,10 @@
 		},
 
 		open: function() {
-			this.$element.addClass(this.options.class.open).trigger('opened' + '.' + this._name);
-			this.$trigger.attr('aria-expanded', true);
+			if (!this.isOpen()) {
+				this.$element.addClass(this.options.class.open).trigger('opened' + '.' + this._name);
+				this.$trigger.attr('aria-expanded', true);
+			}
 		},
 
 		close: function() {
@@ -175,7 +177,11 @@
 			switch (event.which) {
 
 				case KEYCODE.ESCAPE:
-					this.close();
+					// this.close();
+
+					console.log(this.$trigger);
+					this.$trigger.focus();
+
 					break;
 
 				case KEYCODE.UP:
@@ -207,12 +213,6 @@
 						this.selected++;
 					}
 
-					break;
-
-				case KEYCODE.TAB:
-					if (this.selected = this.focusableElements.length - 1) {
-						this.close();
-					}
 					break;
 			}
 
