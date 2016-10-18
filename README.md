@@ -12,7 +12,7 @@ Include the CSS file in the head section:
 <link rel="stylesheet" href="jquery.dropdown.css">
 ```
 
-Include the JS file before the `&lt;/body&gt;`:
+Include the JS file before the `</body>`:
 
 ```html
 <script src="jquery.dropdown.js"></script>
@@ -85,7 +85,7 @@ var $dropdown = $('[data-dropdown-role="dropdown"]');
 Trigger when dropdown is opened.
 
 ```js
-$('[data-dropdown-role="dropdown"]').on('opened.dropdown', function(event) {
+$dropdown.on('opened.dropdown', function(event) {
 	event.preventDefault();
 	console.log(event.target, 'opened');
 });
@@ -96,7 +96,7 @@ $('[data-dropdown-role="dropdown"]').on('opened.dropdown', function(event) {
 Trigger when dropdown is closed.
 
 ```js
-$('[data-dropdown-role="dropdown"]').on('closed.dropdown', function(event) {
+$dropdown.on('closed.dropdown', function(event) {
 	event.preventDefault();
 	console.log(event.target, 'closed');
 });
